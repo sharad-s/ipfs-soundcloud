@@ -1,6 +1,6 @@
 
-//TODO: create json hash as a global variable that can be changed
-
+//TODO: Create json hash as a global variable that can be changed
+//TODO: On file upload, update the new JSONDB hash  
 function validateFormOnSubmit(theForm) {
     var reason = "";
     reason += validateAudio(theForm.audio.value);
@@ -15,33 +15,25 @@ function validateFormOnSubmit(theForm) {
     return false;
 }
 
-
-
-
 function validateName(name) {
-      console.log(name);
       if (!name) {
-        return "No Name ";
+        return "Name ";
       } else {
         return "";
       }
   }
 
 function validateArtist(artist) {
-      console.log(artist);
-
       if (!artist) {
-        return "No Artist ";
+        return "Artist ";
       } else {
         return "";
       }
   }
 
 function validateAudio(file) {
-      console.log(file);
-
       if (!file) {
-        return "No Audio File ";
+        return "Audio File ";
       } else {
         return "";
       }

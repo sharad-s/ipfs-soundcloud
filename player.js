@@ -5,12 +5,9 @@ function($scope, $http)
     $scope.list = null;
     $http.get('https://ipfs.io/ipfs/QmYAwWgcWaTP8xKzHjpZek6W2nWKwWv6n3prvtq8DG2hag')
             .then(function(res){
-                console.log(res.data.length);
                 $scope.list = Array.from(res.data);
-                console.log($scope.list[0].src);
-
             })
-            
+
    $scope.shuf_song = function()
    {
         var music_id = Math.floor(Math.random() * $scope.list.length );
