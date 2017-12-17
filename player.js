@@ -13,4 +13,10 @@ function($scope, $http)
         var music_id = Math.floor(Math.random() * $scope.list.length );
         $scope.list_model = $scope.list[music_id];
    }
+
+   $scope.next_song = function() {
+
+   }
+
+   //event listeners
 });

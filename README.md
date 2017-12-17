@@ -15,9 +15,9 @@ Tracks are streamed from IPFS using their hash as referenced in `songs.json`.
 The format for a streamable song entry stored on IPFS is as follows:
 ```json
 {
-    name:"<Song Name>",
-    artist:"<Artist>",
-    src:"<Hash of Song>"
+    "name":"<Song Name>",
+    "artist":"<Artist>",
+    "src":"<Hash of Song>"
 },
 ```
 Simply `ipfs add` your song, and add its entry to `songs.json` to play it.

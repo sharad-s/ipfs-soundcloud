@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Audio Player</title>
-
     <!-- Bootstrap and Angular -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <!-- IPFS scripts -->
+    <!-- IPFS API -->
     <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.min.js"
-    integrity="sha384-CLaXheXlllrTppt5CyXAKSe6yjmdeXi2IkxbvzAzOwJN3F4zp/Thc2uBHaipvaMl"
-    crossorigin="anonymous"></script>
+    integrity="sha384-CLaXheXlllrTppt5CyXAKSe6yjmdeXi2IkxbvzAzOwJN3F4zp/Thc2uBHaipvaMl" crossorigin="anonymous"></script>
     <!-- Local Scripts  -->
     <script src="./upload.js"></script>
     <script src="./player.js"></script>
@@ -23,21 +22,36 @@
     <div class = "col-md-8 col-s-12 col-xs-12">
       <div ng-controller="audioplayer">
 
-          <h2>Select Song: </h2>
+        <div class = "col-md-6 col-s-12 col-xs-12">
 
+          <!--Dropdown Selection-->
+          <h2>Select Song: </h2>
           <select ng-model="list_model" ng-init="list_model = list[1]"
-          ng-options="music.name group by music.artist for music in list">
+          ng-options="track.name group by track.artist for track in list">
               <option value=""> -- Select -- </option>
           </select>
-
           <button ng-click="shuffle_song()">Shuffle song</button>
           <p>Total Songs: {{ list.length }} </p><br />
 
+          <!--Player-->
           <audio autoplay controls="controls" src="{{prefix}}{{list_model.src}}">
               Your browser does not support the <a href="http://caniuse.com/#search=audio"><code>audio</code></a> element.
           </audio>
-
           <h4>{{list_model.artist}} - {{list_model.name}}</h4>
+
+        </div>
+
+          <!--Playlist Selection
+        <div class = "col-md-6 col-s-12 col-xs-12">
+          <h2>Playlist</h2>
+          <ul id="playlist">
+            <li ng-repeat="track in list">
+              <a ng-model="list_model">{{track.artist}} - {{track.name}}</a>
+            </li>
+          </ul>
+        </div>
+          -->
+
       </div>
     </div>
 
@@ -47,11 +61,12 @@
       <h5>Doesn't upload yet</h5>
 
       <form id="upload" onsubmit="return validateFormOnSubmit(this);">
-        <input type="file" name="audio" accept="audio/*"> <br /><br />
+        <input id="uploader" type="file" name="audio" accept="audio/*"> <br /><br />
         Track Name: <br /> <input type="text" name="name" /> <br />
         Artist:<br />  <input type="text" name="artist" /> <br />
         <input type="submit">
       </form>
+      <audio >
     </div>
 
 </body>
