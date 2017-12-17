@@ -8,7 +8,7 @@ function($scope, $http)
                 $scope.list = Array.from(res.data);
             })
 
-   $scope.shuf_song = function()
+   $scope.shuffle_song = function()
    {
         var music_id = Math.floor(Math.random() * $scope.list.length );
         $scope.list_model = $scope.list[music_id];

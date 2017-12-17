@@ -1,16 +1,19 @@
 
 //TODO: Create json hash as a global variable that can be changed
-//TODO: On file upload, update the new JSONDB hash  
-function validateFormOnSubmit(theForm) {
+//TODO: On file upload, update the new JSONDB hash
+var ipfs = window.IpfsApi();
+
+function validateFormOnSubmit(form) {
     var reason = "";
-    reason += validateAudio(theForm.audio.value);
-    reason += validateName(theForm.name.value);
-    reason += validateArtist(theForm.artist.value);
+    reason += validateAudio(form.audio.value);
+    reason += validateName(form.name.value);
+    reason += validateArtist(form.artist.value);
 
     if (reason != "") {
         alert("Some fields need correction:\n" + reason);
     } else {
-        alert("Success")
+        //TODO: Upload file to IPFS
+        console.log(form.audio.value)    //returns path to file, not file itself
     }
     return false;
 }
@@ -35,6 +38,7 @@ function validateAudio(file) {
       if (!file) {
         return "Audio File ";
       } else {
+        console.log(file);
         return "";
       }
   }

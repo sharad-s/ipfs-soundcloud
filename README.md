@@ -1,23 +1,34 @@
 # angular-audio-player
-From HTML5 audio player repo, with AngularJS.
+From [HTML5 audio player repo, with AngularJS.](https://github.com/iigmir/angular-audio-player).
+Modified to load and stream songs from IPFS.
 
-## Disclaimer on audio files
-This repo is under the MPL-2.0 lisence.
-However, please noticed that **the licence does NOT include audio files**.
-You should handle audio files' copyright issue by yourself.
+## Usage
+To use the site as a music streamer, simply `git clone` and open index.html.
+Alternatively, you can view the site as it's hosted on IPFS [here.](https://ipfs.io/ipns/QmTgbSay5Lj6mBwkzTSAfjTZKkUKjywiW1pf5QL1eLAXMB/)
 
-## How to add song
-`$scope.list` in `player.js` likes playlist in player software.
-To use it, you need to know site of audio file, and name of audio file.
-Then, label audio name in `name` name's value, audio file in `src` name's value. Like following:
+
+
+## Uploading a song
+File uploading is still a work in progress.
+Tracks are currently manually uploaded to IPFS and added as entries in `songs.json`.
+Tracks are streamed from IPFS using their hash as referenced in `songs.json`.
+The format for a streamable song entry stored on IPFS is as follows:
 ```json
 {
-    name:"Foobar music",
-    group:"",
-    src:"https://www.example.com/foobar.mp3"
+    name:"<Song Name>",
+    artist:"<Artist>",
+    src:"<Hash of Song>"
 },
 ```
-`group` is not essential, it's used for grouping files.
+Simply `ipfs add` your song, and add its entry to `songs.json` to play it.
 
 ## To do list
-* End song hehavior: when song ended, porgram will do what user want, like HTML5-audio-player repo.
+* Uploading functionality
+* Immediate update of streamable songs after `ipfs add`-ing a new upload through website.
+* Possibly Implementing IPDB - JSON Database is hacky and vulnerable
+
+
+## Disclaimer on audio files
+This repo is under the MPL-2.0 license.
+However, please noticed that **the license does NOT include audio files**.
+You should handle audio files' copyright issue by yourself.
