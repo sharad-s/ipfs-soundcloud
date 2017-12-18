@@ -21,14 +21,16 @@ function validateFormOnSubmit(form) {
         var reader = getReader();
         //TODO: Any string can be converted into a compatible Buffer, but a Binary String Cannot be converted
         // ipfs.add(Buffer.from("String"), ...) works
-        reader.onload = e => {
+        reader.onloadend = e => {
            var rawData = reader.result;
-
+           console.log(rawData);
            ipfs.add(Buffer.from(rawData), (err, result) => {
              if (err || !result) {
                console.log(`Unable to upload to IPFS API: ${err}`);
              } else {
-               console.log(result[0].hash);
+               resultHash = result[0].hash;
+               console.log(resultHash);
+               alert("Success! Hash: " + resultHash);
              }
            })
         }
@@ -42,7 +44,7 @@ function getReader() {
 
   if(file.files.length) {
     var reader = new FileReader();
-    reader.readAsBinaryString(file.files[0]);
+    reader.readAsArrayBuffer(file.files[0]);
 
      /*
     reader.onload = function(e) {
