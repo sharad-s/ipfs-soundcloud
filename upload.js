@@ -11,21 +11,42 @@ function validateFormOnSubmit(form) {
     // reason += validateName(form.name.value);
     // reason += validateArtist(form.artist.value);
 
+    //Empty Fields
     if (reason != "") {
         alert("Some fields need correction:\n" + reason);
-    } else {
-        //TODO: Upload file to IPFS
-          ipfs.add(Buffer.from(form.audio.value), (err, result) => {
-            if (err || !result) {
-              // keep upload tab and display error message in it
-              console.log(`Unable to upload to IPFS API: ${err}`)
-            } else {
-              // close upload tab as it will be replaced with a new tab with uploaded content
-              console.log(result)
-            }
-          })
+    }
+
+    //All Fields are Input
+    else {
+        var data = getData();
+        //TODO: Any string can be converted into a compatible Buffer, but a Binary String Cannot be converted
+        // ipfs.add(Buffer.from("String"), ...) works
+        ipfs.add(Buffer.from(data), (err, result) => {
+          if (err || !result) {
+            console.log(`Unable to upload to IPFS API: ${err}`);
+          } else {
+            console.log(result[0].hash);
+          }
+        })
     }
     return false;
+}
+
+
+function getData() {
+  var file = document.getElementById('fileuploader');
+
+  if(file.files.length) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        var rawData = reader.result;
+        console.log(rawData);
+        return rawData;
+    };
+
+    reader.readAsBinaryString(file.files[0]);
+  }
 }
 
 function validateName(name) {
