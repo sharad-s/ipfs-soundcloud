@@ -4,7 +4,7 @@ Modified to load and stream songs from IPFS.
 
 ## Usage
 To use the site as a music streamer, simply `git clone` and open index.html.
-Alternatively, you can view the site as it's hosted on IPFS [here.](https://ipfs.io/ipns/QmYsjGL7rxvaCxGQ3E2FnL2HzjeY9sU7kdzahfrdj2MVfR/)
+Alternatively, you can view the site as it's hosted on IPFS [here.](https://ipfs.io/ipfs/QmYsjGL7rxvaCxGQ3E2FnL2HzjeY9sU7kdzahfrdj2MVfR/)
 
 
 
