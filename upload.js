@@ -1,15 +1,14 @@
 
 //TODO: Create json hash as a global variable that can be changed
 //TODO: On file upload, update the new JSONDB hash
-var ipfs = window.IpfsApi();
+var ipfs = window.IpfsApi('ipfs.infura.io', '5001', {protocol: 'https'});
 const Buffer = window.IpfsApi().Buffer;
-
 
 function validateFormOnSubmit(form) {
     var reason = "";
     reason += validateAudio(form.audio.value);
-    // reason += validateName(form.name.value);
-    // reason += validateArtist(form.artist.value);
+    reason += validateName(form.name.value);
+    reason += validateArtist(form.artist.value);
 
     //Empty Fields
     if (reason != "") {
@@ -22,17 +21,24 @@ function validateFormOnSubmit(form) {
         //TODO: Any string can be converted into a compatible Buffer, but a Binary String Cannot be converted
         // ipfs.add(Buffer.from("String"), ...) works
         reader.onloadend = e => {
+
+           //Get Raw Data
            var rawData = reader.result;
-           console.log(rawData);
+
+           //Add File to IPFS
            ipfs.add(Buffer.from(rawData), (err, result) => {
              if (err || !result) {
-               console.log(`Unable to upload to IPFS API: ${err}`);
+               alert(`Unable to upload to IPFS API: ${err}`);
              } else {
                resultHash = result[0].hash;
-               console.log(resultHash);
+               // console.log(resultHash);
                alert("Success! Hash: " + resultHash);
              }
            })
+
+           //Add Upload hash to JSON DB
+          
+
         }
     }
     return false;

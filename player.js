@@ -3,7 +3,8 @@ function($scope, $http)
 {
     $scope.prefix = "https://ipfs.io/ipfs/";
     $scope.list = null;
-    $http.get('https://ipfs.io/ipfs/QmQGbk9CEvJMKZFnU4QSkfq9ev3QWmfUtWuAw9e2eXZGUa')
+    // Using myJSON for json storage
+    $http.get('https://api.myjson.com/bins/o4px6')
             .then(function(res){
                 $scope.list = Array.from(res.data);
             })
