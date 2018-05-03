@@ -4,14 +4,14 @@ Modified to load and stream songs from IPFS.
 
 ## Usage
 To use the site as a music streamer, simply `git clone` and open index.html.
-Alternatively, you can view the site as it's hosted on IPFS [here.](https://ipfs.io/ipns/QmTgbSay5Lj6mBwkzTSAfjTZKkUKjywiW1pf5QL1eLAXMB/)
+Alternatively, you can view the site as it's hosted on IPFS [here.](https://ipfs.io/ipns/QmYsjGL7rxvaCxGQ3E2FnL2HzjeY9sU7kdzahfrdj2MVfR/)
 
 
 
 ## Uploading a song
 File uploading is still a work in progress.
 Tracks are currently manually uploaded to IPFS and added as entries in `songs.json`.
-Tracks are streamed from IPFS using their hash as referenced in `songs.json`.
+Tracks are streamed from IPFS using their hash as referenced in `songs.json` which is uploaded to a CDN currently.
 The format for a streamable song entry stored on IPFS is as follows:
 ```json
 {
